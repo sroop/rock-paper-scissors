@@ -7,11 +7,19 @@ function Game(player1, player2) {
 	this.player2 = player2;
 }
 
+Game.prototype.samePick = function() {
+	return this.player1.pick === this.player2.pick;
+}
+
+Game.prototype.playerOneHasLost = function() {
+	return this.PAIRS[this.player1.pick]['beats'].indexOf(this.player2.pick) === -1;
+}
+
 Game.prototype.winner = function(){
-	if(this.player1.pick === this.player2.pick){
+	if(this.samePick()) {
 		return null;
 	}
-	else if(this.PAIRS[this.player1.pick]['beats'].indexOf(this.player2.pick) === -1 ){
+	else if(this.playerOneHasLost()) {
 		return this.player2;
 	}
 
@@ -30,8 +38,4 @@ Game.prototype.PAIRS = {
 
 Player.prototype.picks = function(pick){
 	this.pick = pick;
-}
-
-Game.prototype.samePick = function(){
-	return this.player1.pick === this.player2.pick;
 }
