@@ -1,8 +1,8 @@
-var PAIRS = {
- 	'rock' : { 'beats' : 'scissors'},
- 	'paper' : { 'beats' : 'rock'},
- 	'scissors' : { 'beats' : 'paper'}
-}
+// var PAIRS = {
+//  	'rock' : { 'beats' : 'scissors'},
+//  	'paper' : { 'beats' : 'rock'},
+//  	'scissors' : { 'beats' : 'paper'}
+// }
 
 function Player(name) {
 	this.name = name;
@@ -17,13 +17,19 @@ Game.prototype.winner = function(){
 	if(this.player1.pick === this.player2.pick){
 		return null;
 	}
-	else if(PAIRS[this.player1.pick]['beats'] === this.player2.pick){
+	else if(this.PAIRS[this.player1.pick]['beats'] === this.player2.pick){
 		return this.player1;
 	}
 
 	else{
 		return this.player2;
 	}
+}
+
+Game.prototype.PAIRS = {
+	'rock' : { 'beats' : 'scissors'},
+ 	'paper' : { 'beats' : 'rock'},
+ 	'scissors' : { 'beats' : 'paper'}
 }
 
 Player.prototype.picks = function(pick){
@@ -33,3 +39,4 @@ Player.prototype.picks = function(pick){
 Game.prototype.samePick = function(){
 	return this.player1.pick === this.player2.pick;
 }
+
