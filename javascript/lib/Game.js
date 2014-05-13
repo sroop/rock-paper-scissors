@@ -52,3 +52,12 @@ Game.prototype.victoryMessage = function() {
   	return message;
 }
 
+Game.prototype.randomChoice = function() {
+	var number = Math.floor(Math.random() * 5);
+	return this.computerPick[number]
+}
+
+Game.prototype.computerPick = {
+	0 : 'rock', 1 : 'paper', 2 : 'scissors', 3 : 'spock', 4 : 'lizard'
+}
+

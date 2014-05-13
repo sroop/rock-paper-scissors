@@ -13,9 +13,24 @@
       		<img src="images/lizard.png" data-pick='lizard'>
       		<img src="images/spock.png" data-pick='spock'>
 		</section>
+		<section>
+		 	<ul id="result">
+    		</ul>
+    	</section>
 
 		<script src='./lib/Player.js'></script>
 		<script src='./lib/Game.js'></script>
 		<script src='http://code.jquery.com/jquery-2.1.1.min.js'></script>
+		<script> $(document).ready(function() {
+			var human = new Player('Human');
+			var computer = new Player('Computer');
+			var game = new Game(human, computer);
+			$('.choices img').on('click', function() {
+				human.picks($(this).data('pick'));
+				computer.picks(game.randomChoice());			
+				$('#result').prepend('<li>' + game.victoryMessage() + '</li>');
+			})
+		})
+		</script>
 	</body>	
 </html>
