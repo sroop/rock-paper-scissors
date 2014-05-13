@@ -30,3 +30,24 @@ Game.prototype.winner = function() {
 		return this.player2;
 	}
 }
+
+Game.prototype.loser = function() {
+	if(this.winner() === this.player1) {
+		return this.player2;
+	}
+	else {
+		return this.player1;
+	}
+}
+
+Game.prototype.victoryMessage = function() {
+	var message;
+
+  	if(this.winner()) {
+    	message = [this.winner().name, this.victoryVerb(this.winner().pick, this.loser().pick), this.loser().name].join(' ');
+  	}
+  	else if(this.samePick()) {
+    	message = 'Draw';
+  	}
+  	return message;
+}

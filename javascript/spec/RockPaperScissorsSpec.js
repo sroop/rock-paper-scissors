@@ -211,4 +211,24 @@ describe("Rock-Paper-Scissors", function() {
 
   });
 
+  describe('victory message', function() { 
+
+    it('should say Draw when players have the same picks', function() {
+
+      player1.picks('lizard');
+      player2.picks('lizard');
+      expect(game.victoryMessage()).toEqual('Draw'); 
+
+    });
+
+    it('should say ALEX poisons NICO', function() {
+
+      player1.picks('lizard');
+      player2.picks('spock');
+      expect(game.victoryMessage()).toEqual('ALEX poisons NICO');
+
+    });
+
+  });
+
 });
